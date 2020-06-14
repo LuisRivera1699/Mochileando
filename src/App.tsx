@@ -1,16 +1,32 @@
 import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import Header from "./components/header/controller";
-import Footer from "./components/footer/controller";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Error from "./pages/Error";
+import Register from "./pages/Register";
+
+import { useUser } from "reactfire";
 
 function App() {
-  return (
-    <>
-      <Header></Header>
-      <div className="text-3xl text-center">App</div>
-      <Footer></Footer>
-    </>
-  );
+    const user = useUser();
+
+    return (
+        <>
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/" component={Home} exact></Route>
+                    <Route path="/login" exact>
+                        {user ? <Redirect to="/" /> : <Login />}
+                    </Route>
+                    <Route path="/register" exact>
+                        {user ? <Redirect to="/" /> : <Register />}
+                    </Route>
+                    <Route path="/" component={Error}></Route>
+                </Switch>
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;

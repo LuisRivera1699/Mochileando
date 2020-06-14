@@ -1,19 +1,10 @@
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-
-// import * as firebase from "firebase/app";
-
-// Add the Firebase services that you want to use
-
-// import "firebase/auth";
-// import "firebase/firestore";
-
-export const firebaseConfig = {
-  apiKey: "api-key",
-  authDomain: "project-id.firebaseapp.com",
-  databaseURL: "https://project-id.firebaseio.com",
-  projectId: "project-id",
-  storageBucket: "project-id.appspot.com",
-  messagingSenderId: "sender-id",
-  appID: "app-id",
+export default {
+    apiKey: "AIzaSyB0wYIVHr6bgRt7atv2x1EfIaA4J00KZvU",
+    authDomain: "mochileando-621d2.firebaseapp.com",
+    databaseURL: "https://mochileando-621d2.firebaseio.com",
+    projectId: "mochileando-621d2",
+    storageBucket: "mochileando-621d2.appspot.com",
+    messagingSenderId: "55707952687",
+    appId: "1:55707952687:web:4269ff03217e23e9e948da",
+    measurementId: "G-N8R5VQG11Z",
 };
