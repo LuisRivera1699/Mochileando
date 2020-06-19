@@ -1,16 +1,29 @@
-import React from "react";
+import React from 'react';
+import './App.css';
+import { AuthContext } from './context/AuthContext';
+import Login from "./views/Login";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Dashboard from "./views/Dashboard"
 
-import Header from "./components/header/controller";
-import Footer from "./components/footer/controller";
-
-function App() {
-  return (
-    <>
-      <Header></Header>
-      <div className="text-3xl text-center">App</div>
-      <Footer></Footer>
-    </>
-  );
-}
+const App = () => (
+    <AuthContext>
+      <Router>
+        <Switch>
+          <Route path="/perfil">
+            <p>Perfil</p>
+          </Route>
+          <Route exact path="/login">
+            <Login/>
+          </Route>
+          <Route exact path="/">
+            <Dashboard/>
+          </Route>
+          <Route path="*">
+            <p>ERROR</p>
+          </Route>
+        </Switch>
+      </Router>
+    </AuthContext>
+)
 
 export default App;
