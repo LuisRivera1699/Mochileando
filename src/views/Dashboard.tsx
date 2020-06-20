@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import { Auth } from "../context/AuthContext";
 import { app } from "../firebaseConfig";
 import Header from "../components/Header";
+import Map from "../components/Map";
 
 const Dashboard = ({ history }: any) => {
     const { usuario } = useContext(Auth);
@@ -68,6 +69,8 @@ const Dashboard = ({ history }: any) => {
                     </div>
                 </div>
             )}
+
+            <Map />
         </div>
     );
 };

@@ -51,20 +51,22 @@ export default function UserGuide(): ReactElement {
             <div className="container mx-auto px-4 pt-4">
                 <h1 className="text-3xl mb-3">Preguntas Frecuentes</h1>
                 {isLoading && <div>Cargando ...</div>}
-                {faqs?.map(({ pregunta, respuesta }, i) => (
-                    <div className="mb-2" id={pregunta}>
-                        <h2 className="text-xl font-bold">{pregunta}</h2>
-                        <p className="p-2">{respuesta}</p>
-                    </div>
-                ))}
+                {!isLoading &&
+                    faqs?.map(({ pregunta, respuesta }, i) => (
+                        <div className="mb-2" id={pregunta}>
+                            <h2 className="text-xl font-bold">{pregunta}</h2>
+                            <p className="p-2">{respuesta}</p>
+                        </div>
+                    ))}
                 <h1 className="text-3xl mb-3">Números de emergencia</h1>
                 {isLoading && <div>Cargando ...</div>}
-                {emergencyNumbers?.map(({ nombre, numero }, i) => (
-                    <div className="mb-2" id={nombre}>
-                        <h2 className="text-xl font-bold">{nombre}</h2>
-                        <p className="p-2">{numero}</p>
-                    </div>
-                ))}
+                {!isLoading &&
+                    emergencyNumbers?.map(({ nombre, numero }, i) => (
+                        <div className="mb-2" id={nombre}>
+                            <h2 className="text-xl font-bold">{nombre}</h2>
+                            <p className="p-2">{numero}</p>
+                        </div>
+                    ))}
             </div>
         </div>
     );
