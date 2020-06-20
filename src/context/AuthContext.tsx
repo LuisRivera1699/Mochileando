@@ -12,7 +12,7 @@ export const AuthContext = ({ children }: any) => {
     const [showChild, setShowChild] = useState(false);
 
     useEffect(() => {
-        app.auth().onAuthStateChanged(function (user) {
+        app.auth().onAuthStateChanged(function (user: any) {
             setUsuario(user);
             setShowChild(true);
         });

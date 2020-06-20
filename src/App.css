@@ -5,6 +5,83 @@
   grid-template-areas: "grid-header" "grid-body";
 }
 
+.grid-body-registrar {
+  grid-area: grid-body;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-areas: " . . reg-phrase reg-phrase . " " reg-form-container reg-form-container reg-form-container . ." " . . . . .";
+}
+
+.reg-phrase{
+  grid-area: reg-phrase;
+}
+
+.reg-form-container{
+  grid-area: reg-form-container;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". . . ." ". nombre-reg-c apellido-reg-c ." ". email-reg-c email-reg-c ." ". password-reg-c password-reg-c ."
+    ". fechaNac-reg-c fechaNac-reg-c ." ". genero-reg-c genero-reg-c ." ". . registro-reg-c ." ". . sicuenta-reg-c ." ". . . .";
+  align-items: center;
+}
+
+.sicuenta-reg-c { 
+  grid-area: sicuenta-reg-c; 
+}
+
+.sicuenta-reg{
+  text-align: center;
+}
+
+.registro-reg-c { 
+  grid-area: registro-reg-c; 
+}
+
+.registro-reg{
+  width: 100%;
+}
+
+.genero-reg-c {
+   grid-area: genero-reg-c; 
+  }
+
+.fechaNac-reg-c {
+   grid-area: fechaNac-reg-c; 
+  }
+
+.password-reg-c {
+   grid-area: password-reg-c; 
+  }
+
+.password-reg{
+  width: 100%;
+}
+
+.email-reg-c {
+   grid-area: email-reg-c;
+  }
+
+.email-reg{
+  width:100%;
+}
+.nombre-reg-c{
+  grid-area: nombre-reg-c;
+}
+
+.nombre-reg{
+  width: 85%;
+}
+
+.apellido-reg-c {
+   grid-area: apellido-reg-c; 
+  }
+
+.apellido-reg{
+  width: 100%;
+}
+
 .grid-body-login {
   grid-area: grid-body;
   display: grid;

@@ -1,22 +1,16 @@
 import React, { ReactElement } from "react";
 import { app } from "../firebaseConfig";
 
-interface Props {}
+interface Props { }
 
 export default function Header({ history, state }: any): ReactElement {
     const auxHistory = history || [];
 
     const renderLogIn = () => {
-        auxHistory.push({
-            pathname: "/login",
-            signup: false,
-        });
+        auxHistory.push("/login");
     };
     const renderSignup = () => {
-        auxHistory.push({
-            pathname: "/login",
-            signup: true,
-        });
+        auxHistory.push("/signup");
     };
 
     const renderWelcome = () => {

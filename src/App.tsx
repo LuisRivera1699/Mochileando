@@ -6,19 +6,23 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
 import UserGuide from "./views/UserGuide";
+import Signup from "./views/Signup";
 
 const App = () => (
     <AuthContext>
         <Router>
             <Switch>
-                <Route path="/guia-de-usuario">
+                <Route exact path="/guia-de-usuario">
                     <UserGuide />
                 </Route>
-                <Route path="/perfil">
+                <Route exact path="/perfil">
                     <p>Perfil</p>
                 </Route>
                 <Route exact path="/login">
                     <Login />
+                </Route>
+                <Route exact path="/signup">
+                    <Signup />
                 </Route>
                 <Route exact path="/">
                     <Dashboard />

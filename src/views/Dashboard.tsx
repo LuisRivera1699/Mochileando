@@ -15,8 +15,8 @@ const Dashboard = ({ history }: any) => {
                 .collection("users")
                 .doc(usuario.uid)
                 .get()
-                .then((doc) => setnombre(doc.data()?.nombre))
-                .catch((err) => console.log(err));
+                .then((doc : any) => setnombre(doc.data()?.nombre))
+                .catch((err : any) => console.log(err));
         }
     }, [history, usuario]);
 
