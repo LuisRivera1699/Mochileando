@@ -16,8 +16,8 @@ const Dashboard = ({ history }: any) => {
                 .collection("users")
                 .doc(usuario.uid)
                 .get()
-                .then((doc : any) => setnombre(doc.data()?.nombre))
-                .catch((err : any) => console.log(err));
+                .then((doc: any) => setnombre(doc.data()?.nombre))
+                .catch((err: any) => console.log(err));
         }
     }, [history, usuario]);
 
@@ -50,25 +50,25 @@ const Dashboard = ({ history }: any) => {
                                 </p>
                             </div>
                             <div className="pub-foto">
-                                {/* <img src={require("../paisaje.png")} /> */}
+                                <img src={require("../paisaje.png")} />
                             </div>
                         </div>
                     </div>
                 </div>
             ) : (
-                <div className="grid-welcome-page-container">
-                    <Header history={history} state="authorized" />
-                    <div className="grid-body">
-                        <div className="pub-tag">
-                            <h2>Publicaci&oacute;n</h2>
-                        </div>
-                        <div className="pub-container">
-                            <div className="pub-text"></div>
-                            <div className="pub-foto"></div>
+                    <div className="grid-welcome-page-container">
+                        <Header history={history} state="authorized" />
+                        <div className="grid-body">
+                            <div className="pub-tag">
+                                <h2>Publicaci&oacute;n</h2>
+                            </div>
+                            <div className="pub-container">
+                                <div className="pub-text"></div>
+                                <div className="pub-foto"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
 
             <Map />
         </div>

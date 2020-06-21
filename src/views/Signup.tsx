@@ -44,14 +44,12 @@ const Signup = () => {
 
     return (
         <div className="grid-welcome-page-container">
-            <Header
-                state="SignUp"
-                history={history} />
+            <Header state="SignUp" history={history} />
             <div className="grid-body-registrar">
-                <div className="reg-phrase">
-                    <h3>Viaja con Nosotros</h3>
-                </div>
                 <form className="reg-form-container" onSubmit={handleSignUp}>
+                    <div className="reg-phrase">
+                        <h3>Viaja con Nosotros</h3>
+                    </div>
                     <div className="nombre-reg-c">
                         <input
                             className="nombre-reg"
@@ -82,15 +80,15 @@ const Signup = () => {
                     </div>
                     <div className="fechaNac-reg-c">
                         <label>Fecha de Nacimiento</label>
-                    &nbsp;&nbsp;
-                    <input
+                        &nbsp;&nbsp;
+                        <input
                             type="date"
                             name="nacimiento" />
                     </div>
                     <div className="genero-reg-c">
                         <label> G&eacute;nero</label>
-                    &nbsp;&nbsp;
-                    <select name="sexo">
+                        &nbsp;&nbsp;
+                        <select name="sexo">
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>
                             <option value="Otro">Otro</option>
@@ -107,11 +105,12 @@ const Signup = () => {
                             className="sicuenta-reg"
                             onClick={() => renderLogIn()}>
                             Ya tengo una cuenta
-                    </p>
+                        </p>
                     </div>
                 </form>
             </div>
         </div>
+
     );
 };
 

@@ -49,7 +49,7 @@ const Login = ({ history }: any) => {
             <Header state="LogIn" history={history} />
             <div className="grid-body-login">
                 <div className="login-foto">
-                    {/* <img src={require("../paisaje_login.png")} /> */}
+                    <img src={require("../paisaje_login.png")} />
                 </div>
                 <form
                     className="login-form-container"

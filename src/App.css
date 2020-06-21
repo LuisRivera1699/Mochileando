@@ -9,22 +9,24 @@
   grid-area: grid-body;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 5fr 1fr;
-  grid-template-areas: " . . reg-phrase reg-phrase . " " reg-form-container reg-form-container reg-form-container . ." " . . . . .";
+  grid-template-rows: 0.5fr 5fr 1fr;
+  grid-template-areas: " . . . . . " " reg-form-container reg-form-container reg-form-container . ." " . . . . .";
 }
 
-.reg-phrase{
-  grid-area: reg-phrase;
-}
 
 .reg-form-container{
   grid-area: reg-form-container;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". . . ." ". nombre-reg-c apellido-reg-c ." ". email-reg-c email-reg-c ." ". password-reg-c password-reg-c ."
+  grid-template-areas: ". reg-phrase reg-phrase ." ". nombre-reg-c apellido-reg-c ." ". email-reg-c email-reg-c ." ". password-reg-c password-reg-c ."
     ". fechaNac-reg-c fechaNac-reg-c ." ". genero-reg-c genero-reg-c ." ". . registro-reg-c ." ". . sicuenta-reg-c ." ". . . .";
   align-items: center;
+}
+
+.reg-phrase{
+  grid-area: reg-phrase;
+  text-align: center;
 }
 
 .sicuenta-reg-c { 
