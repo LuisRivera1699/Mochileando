@@ -213,7 +213,7 @@
 .grid-header {
   grid-area : grid-header;
   display: grid;
-  grid-template-columns: 3fr 1.5fr;
+  grid-template-columns: 3fr 2fr;
   gap: 1px 1px;
   grid-template-areas: "header-title-container header-auth-container";
   align-items: center;
@@ -230,9 +230,9 @@
 
 .header-auth-inside-container { width: fit-content; }
 
-.header-log-in-button { width: 150px; font-size: large; margin: 5px}
+.header-log-in-button { width: 150px; font-size: medium; margin: 5px; text-align: center;}
 
-.header-sign-up-button { width: 150px; font-size: large; margin: 5px;}
+.header-sign-up-button { width: 150px; font-size: medium; margin: 5px; text-align: center;}
 
 
 

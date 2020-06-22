@@ -17,6 +17,10 @@ export default function Header({ history, state, height }: any): ReactElement {
         auxHistory.push("/");
     };
 
+    const renderUserGuide = () => {
+        auxHistory.push("/guia-de-usuario");
+    }
+
     if (state === "welcome") {
         return (
             <div className="grid-header bg-green-500">
@@ -44,6 +48,12 @@ export default function Header({ history, state, height }: any): ReactElement {
                         >
                             Registrarse
                         </button>
+                        <button
+                            className="header-sign-up-button py-2 px-4 rounded bg-white"
+                            onClick={() => renderUserGuide()}
+                        >
+                            Guia de Usuario
+                        </button>
                     </div>
                 </div>
             </div>
@@ -70,6 +80,12 @@ export default function Header({ history, state, height }: any): ReactElement {
                             >
                                 Registrarse
                             </button>
+                            <button
+                                className="header-sign-up-button py-2 px-4 rounded bg-white"
+                                onClick={() => renderUserGuide()}
+                            >
+                                Guia de Usuario
+                        </button>
                         </div>
                     </div>
                 </div>
@@ -96,6 +112,12 @@ export default function Header({ history, state, height }: any): ReactElement {
                                 >
                                     Iniciar Sesi&oacute;n
                                 </button>
+                                <button
+                                    className="header-sign-up-button py-2 px-4 rounded bg-white"
+                                    onClick={() => renderUserGuide()}
+                                >
+                                    Guia de Usuario
+                        </button>
                             </div>
                         </div>
                     </div>
