@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { app } from "../firebaseConfig";
 
 import Header from "../components/Header";
+import { useHistory } from "react-router-dom";
 
 interface Faq {
     pregunta?: string;
@@ -14,6 +15,7 @@ interface EmergencyNumber {
 }
 
 export default function UserGuide(): ReactElement {
+    let history = useHistory();
     const [faqs, setFaqs] = useState<Faq[] | undefined>([]);
     const [emergencyNumbers, setEmergencyNumbers] = useState<
         EmergencyNumber[] | undefined
@@ -46,7 +48,7 @@ export default function UserGuide(): ReactElement {
 
     return (
         <div>
-            <Header />
+            <Header state="welcome-wo" history={history} />
 
             <div className="container mx-auto px-4 pt-4">
                 <h1 className="text-3xl mb-3">Preguntas Frecuentes</h1>
