@@ -65,7 +65,7 @@ const Dashboard = ({ history }: any) => {
                                 </p>
                             </div>
                             <div className="pub-foto flex items-center justify-center">
-                                <img src={require("../paisaje.png")} />
+                                <img src={require("../paisaje.png")} alt="paisaje"/>
                             </div>
                         </div>
                     </div>

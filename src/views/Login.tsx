@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import {
     withRouter,
-    useLocation,
+    // useLocation,
 } from "react-router"; /* Solo para logearnos con RRSS*/
 /*import * as firebase from "firebase/app";*/ import { app } from "../firebaseConfig";
-import Signup from "./Signup";
+// import Signup from "./Signup";
 import { Auth } from "../context/AuthContext";
 import Header from "../components/Header";
 
@@ -12,7 +12,7 @@ const Login = ({ history }: any) => {
     //const location = useLocation();
     //const [signup, setsignup] = useState(location.key);
     const { usuario } = useContext(Auth);
-    const [error, seterror] = useState("");
+    // const [error, seterror] = useState("");
 
     useEffect(() => {
         if (usuario) {
@@ -40,7 +40,7 @@ const Login = ({ history }: any) => {
                 history.push("/");
             })
             .catch((error: any) => {
-                seterror(error.message);
+                // seterror(error.message);
             });
     };
 
@@ -49,7 +49,7 @@ const Login = ({ history }: any) => {
             <Header state="LogIn" history={history} />
             <div className="grid-body-login">
                 <div className="login-foto">
-                    <img src={require("../paisaje_login.png")} />
+                    <img src={require("../paisaje_login.png")}  alt="paisaje"/>
                 </div>
                 <form
                     className="login-form-container bg-white"
