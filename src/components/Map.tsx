@@ -66,7 +66,7 @@ const Map = ({ setpoints }: any) => {
 
             return () => script.removeEventListener(`load`, onLoad);
         } else onLoad();
-    });
+    }, [setpoints]);
 
     return (
         <>
