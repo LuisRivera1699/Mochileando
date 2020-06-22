@@ -107,30 +107,35 @@ export default function Header({ history, state, height }: any): ReactElement {
                             <h1>Mochilleando</h1>
                         </div>
                         <div className="text-center px-6 py-6 ">
-                            <a className="bg-transparent font-semibold 
+                            <button className="bg-transparent font-semibold 
                                 hover:text-white py-2 px-4  
-                                rounded" style={{ width: 200, cursor: "pointer" }}>Perfil</a>
+                                rounded" style={{ width: 200, cursor: "pointer" }}
+                            >Perfil</button>
                         </div>
                         <div className="text-center px-6 py-6 ">
-                            <a className="bg-transparent font-semibold 
+                            <button className="bg-transparent font-semibold 
                                 hover:text-white py-2 px-4  
-                                rounded" style={{ width: 200, cursor: "pointer" }}>Seguidores</a>
+                                rounded" style={{ width: 200, cursor: "pointer" }}
+                            >Seguidores</button>
                         </div>
                         <div className="text-center px-6 py-6 ">
-                            <a className="bg-transparent font-semibold 
+                            <button className="bg-transparent font-semibold 
                                 hover:text-white py-2 px-4 
-                                rounded" style={{ width: 200, cursor: "pointer" }}>Seguidos</a>
+                                rounded" style={{ width: 200, cursor: "pointer" }}
+                            >Seguidos</button>
                         </div>
                         <div className="text-center px-6 py-6 ">
-                            <a className="bg-transparent font-semibold 
+                            <button className="bg-transparent font-semibold 
                                 hover:text-white py-2 px-4 
-                                rounded" style={{ width: 200, cursor: "pointer" }}>Configuracion</a>
+                                rounded" style={{ width: 200, cursor: "pointer" }}
+                            >Configuracion</button>
                         </div>
                         <div className="text-center px-6 py-6 my-12">
-                            <a className="bg-transparent font-semibold 
+                            <button className="bg-transparent font-semibold 
                                 hover:text-white  
                                 rounded" style={{ width: 200, cursor: "pointer" }}
-                                onClick={() => app.auth().signOut()}>Cerrar Sesion</a>
+                                onClick={() => app.auth().signOut()}
+                            >Cerrar Sesion</button>
                         </div>
                     </div>
                 );

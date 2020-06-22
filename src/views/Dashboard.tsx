@@ -7,7 +7,7 @@ import Modal from "../components/travelModal/Modal"
 
 const Dashboard = ({ history }: any) => {
     const { usuario } = useContext(Auth);
-    const [nombre, setnombre] = useState(null);
+    //const [nombre, setnombre] = useState(null);
     const height = window.innerHeight;
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Dashboard = ({ history }: any) => {
                 .collection("users")
                 .doc(usuario.uid)
                 .get()
-                .then((doc: any) => setnombre(doc.data()?.nombre))
+                .then((doc: any) => console.log("created")/*setnombre(doc.data()?.nombre)*/)
                 .catch((err: any) => console.log(err));
         }
     }, [history, usuario]);
@@ -65,7 +65,7 @@ const Dashboard = ({ history }: any) => {
                                 </p>
                             </div>
                             <div className="pub-foto flex items-center justify-center">
-                                <img src={require("../paisaje.png")} alt="paisaje"/>
+                                <img src={require("../paisaje.png")} alt="paisaje" />
                             </div>
                         </div>
                     </div>
