@@ -1,8 +1,25 @@
 .grid-welcome-page-container {
   display: grid;
-  grid-template-rows: 1fr 5fr;
+  grid-template-rows: 1fr 10fr;
   gap: 1px 1px;
   grid-template-areas: "grid-header" "grid-body";
+}
+
+.grid-home-page-traveller-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "grid-side-bar grid-home-container";
+  height: 100%;
+}
+
+.grid-side-barr {
+  grid-area: grid-side-bar;
+
+}
+
+.grid-home-container {
+  grid-area: grid-home-container;
 }
 
 .grid-body-registrar {
@@ -10,7 +27,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 0.5fr 5fr 1fr;
-  grid-template-areas: " . . . . . " " reg-form-container reg-form-container reg-form-container . ." " . . . . .";
+  grid-template-areas: " . . . . . " ". reg-form-container reg-form-container reg-form-container . " " . . . . .";
 }
 
 
@@ -18,8 +35,8 @@
   grid-area: reg-form-container;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". reg-phrase reg-phrase ." ". nombre-reg-c apellido-reg-c ." ". email-reg-c email-reg-c ." ". password-reg-c password-reg-c ."
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". . . ." ". reg-phrase reg-phrase ." ". nombre-reg-c apellido-reg-c ." ". email-reg-c email-reg-c ." ". password-reg-c password-reg-c ."
     ". fechaNac-reg-c fechaNac-reg-c ." ". genero-reg-c genero-reg-c ." ". . registro-reg-c ." ". . sicuenta-reg-c ." ". . . .";
   align-items: center;
 }
@@ -97,7 +114,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 3fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". . . login-form-title . . ." ". user-container user-container user-container user-container user-container ." ". password-container password-container password-container password-container password-container ." ". . login-button-container login-button-container login-button-container . ." ". line-container line-container line-container line-container line-container ." ". . facebook-button-container facebook-button-container facebook-button-container . ." ". . google-button-container google-button-container google-button-container . ." ". . . . . . .";
+  grid-template-areas: ". login-form-title login-form-title login-form-title login-form-title login-form-title ." ". user-container user-container user-container user-container user-container ." ". password-container password-container password-container password-container password-container ." ". . login-button-container login-button-container login-button-container . ." ". line-container line-container line-container line-container line-container ." ". . facebook-button-container facebook-button-container facebook-button-container . ." ". . google-button-container google-button-container google-button-container . ." ". . . . . . .";
   align-items: center;
   border: 1px solid black;
 }
@@ -216,3 +233,91 @@
 .header-log-in-button { width: 150px; font-size: large; margin: 5px}
 
 .header-sign-up-button { width: 150px; font-size: large; margin: 5px;}
+
+
+
+.modal-wrapper {
+  background: white;
+  border: 1px solid #d0cccc;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+  margin: 40px auto 0;
+  transition: all .8s;
+  width: 60%;
+}
+
+.modal-popito {
+  background: grey;
+  border: 1px solid #d0cccc;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2) 0 7px 20px 0 rgba(0,0,0,0.17);
+  margin: 20px auto 0;
+  transition: all .5s;
+  width: 40%;
+}
+
+.modal-header {
+  background: coral;
+  height: 40px;
+  line-height: 40px;
+  padding: 5px 20px;
+  text-align: right;
+}
+
+.modal-body {
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.modal-footer {
+  height: 45px;
+  padding: 15px;
+}
+
+.close-modal-btn {
+  color: white;
+  cursor: pointer;
+  float: right;
+  font-size: 30px;
+  margin: 0;
+}
+
+.close-modal-btn:hover {
+  color: black;
+}
+
+.btn-cancel, .btn-continue {
+  background: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  padding: 10px;
+}
+
+.btn-cancel {
+  background-color: brown;
+  float: left;
+  position: relative;
+  top:10px;
+}
+
+.btn-continue {
+  background-color: darkcyan;
+  float: right;
+  position: relative;
+  top:10px;
+}
+
+.back-drop {
+  background-color: rgba(48, 49, 48, 0.42);
+  height: 100%;
+  position: fixed;
+  transition: all 1.3s;
+  width: 100%;
+}
+
+.open-modal-btn {
+  margin: 15px;
+  padding: 10px;
+  font-weight: bold;
+}

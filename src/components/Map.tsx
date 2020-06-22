@@ -11,7 +11,7 @@ declare global {
 }
 
 // La ruta se guarda en la variable global window.points
-export default function Map() {
+const Map = ({ setpoints }: any) => {
     const ref = useRef(null);
 
     useEffect(() => {
@@ -33,6 +33,8 @@ export default function Map() {
                     ...window.points,
                     { lat: event.latLng.lat(), lng: event.latLng.lng() },
                 ];
+
+                setpoints(window.points);
 
                 console.log(window.points);
 
@@ -79,3 +81,5 @@ export default function Map() {
         </>
     );
 }
+
+export { Map };
