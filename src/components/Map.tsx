@@ -11,7 +11,7 @@ declare global {
 }
 
 // La ruta se guarda en la variable global window.points
-export default function Map() {
+const Map = ({ setpoints }: any) => {
     const ref = useRef(null);
 
     useEffect(() => {
@@ -19,8 +19,8 @@ export default function Map() {
             window.points = [];
 
             window.map = new window.google.maps.Map(ref.current, {
-                zoom: 3,
-                center: { lat: -11.74387987225271, lng: -78.06427870451063 },
+                zoom: 5,
+                center: { lat: -9.19777751008936, lng: -75.28101863230539 },
                 mapTypeId: "terrain",
             });
 
@@ -33,6 +33,8 @@ export default function Map() {
                     ...window.points,
                     { lat: event.latLng.lat(), lng: event.latLng.lng() },
                 ];
+
+                setpoints(window.points);
 
                 console.log(window.points);
 
@@ -64,7 +66,7 @@ export default function Map() {
 
             return () => script.removeEventListener(`load`, onLoad);
         } else onLoad();
-    }, []);
+    });
 
     return (
         <>
@@ -79,3 +81,5 @@ export default function Map() {
         </>
     );
 }
+
+export { Map };

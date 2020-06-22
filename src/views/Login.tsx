@@ -24,9 +24,9 @@ const Login = ({ history }: any) => {
         setsignup(location.pathname);
     }, [location.pathname]);*/
 
-    /*const renderSignUp = () => {
+    const renderSignUp = () => {
         history.push("/signup");
-    };*/
+    };
 
     const correoClave = async (e: any) => {
         e.preventDefault();
@@ -45,24 +45,31 @@ const Login = ({ history }: any) => {
     };
 
     return (
-        <div className="grid-welcome-page-container">
+        <div className="grid-welcome-page-container bg-gray-900" style={{ height: window.innerHeight }}>
             <Header state="LogIn" history={history} />
             <div className="grid-body-login">
                 <div className="login-foto">
                     <img src={require("../paisaje_login.png")}  alt="paisaje"/>
                 </div>
                 <form
-                    className="login-form-container"
+                    className="login-form-container bg-white"
                     onSubmit={correoClave}
                 >
                     <div className="login-form-title">
-                        <p className="login-form-title-text">
+                        <p className="login-form-title-text font-bold">
                             Iniciar Sesi&oacute;n
-                                </p>
+                        </p>
+                        <div className="text-center text-sm">
+                            <span>¿No tienes cuenta?</span>
+                            &nbsp;
+                            <span className="font-semibold"
+                                onClick={() => renderSignUp()}
+                                style={{ cursor: "pointer" }}>Reg&iacute;strate</span>
+                        </div>
                     </div>
                     <div className="user-container">
                         <input
-                            className="user-input-field"
+                            className="user-input-field rounded w-full py-2 px-3 bg-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                             type="text"
                             name="usuario"
                             placeholder="Ingresa tu email"
@@ -70,37 +77,36 @@ const Login = ({ history }: any) => {
                     </div>
                     <div className="password-container">
                         <input
-                            className="password-input-field"
+                            className="password-input-field rounded w-full py-2 px-3 bg-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                             type="password"
                             name="clave"
                             placeholder="Ingresa tu clave"
                         />
+                        <div className="text-gray-400" style={{ cursor: "pointer" }}>
+                            ¿Olvidaste tu contrase&ntilde;a?
+                        </div>
                     </div>
                     <div className="login-button-container">
                         <input
-                            className="login-button"
+                            className="login-button rounded py-2 px-3"
                             type="submit"
                             value="Ingresar"
+                            style={{ cursor: "pointer" }}
                         />
                     </div>
                     <div className="line-container">
                         <hr className="line" />
                     </div>
                     <div className="facebook-button-container">
-                        <button className="facebook-button">
+                        <button className="facebook-button bg-blue-600 text-white py-2 px-3 rounded">
                             Ingresa con Facebook
                                 </button>
                     </div>
                     <div className="google-button-container">
-                        <button className="google-button">
+                        <button className="google-button bg-red-600 text-white py-2 px-3 rounded">
                             Ingresa con Google
                                 </button>
                     </div>
-                    {/*error? <p>{error}</p> : null*/}
-                    {/*<button
-                                onClick={() => renderSignUp(true)}>
-                                Registrarse
-                            </button>*/}
                 </form>
             </div>
         </div>
