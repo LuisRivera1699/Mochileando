@@ -55,6 +55,10 @@ export default function RecoveryPassword(): ReactElement {
                                     .sendPasswordResetEmail(input.value);
 
                                 history.push("/");
+
+                                window.alert(
+                                    "Se ha enviado un link de restauración al correo electronico ingresado."
+                                );
                             } catch (error) {
                                 seterror(error?.message);
                             }
