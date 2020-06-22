@@ -7,6 +7,7 @@ import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
 import UserGuide from "./views/UserGuide";
 import Signup from "./views/Signup";
+import RecoveryPassword from "./views/RecoveryPassword";
 
 const App = () => (
     <AuthContext>
@@ -14,6 +15,9 @@ const App = () => (
             <Switch>
                 <Route exact path="/guia-de-usuario">
                     <UserGuide />
+                </Route>
+                <Route exact path="/recuperar-contraseña">
+                    <RecoveryPassword />
                 </Route>
                 <Route exact path="/perfil">
                     <p>Perfil</p>
