@@ -101,44 +101,71 @@ export default function Header({ history, state, height }: any): ReactElement {
                     </div>
                 );
             } else {
-                return (
-                    <div className="flex flex-col bg-green-500" style={{ height: height }}>
-                        <div className="text-center px-6 py-6 my-12">
-                            <h1>Mochilleando</h1>
+                if (state === "welcome-wo") {
+                    return (
+                        <div className="grid-header bg-green-500">
+                            <div className="header-title-container">
+                                <div className="header-title-inside-container">
+                                    <h1
+                                        className="h1-header font-semibold"
+                                        onClick={() => renderWelcome()}
+                                    >
+                                        Mochilleando
+                                    </h1>
+                                </div>
+                            </div>
+                            <div className="header-auth-container">
+                                <div className="header-auth-inside-container">
+                                    {/*<button
+                                        className="header-log-in-button py-2 px-4 rounded bg-white"
+                                        onClick={() => renderLogIn()}
+                                    >
+                                        Iniciar Sesi&oacute;n
+                                    </button>*/}
+                                </div>
+                            </div>
                         </div>
-                        <div className="text-center px-6 py-6 ">
-                            <button className="bg-transparent font-semibold 
-                                hover:text-white py-2 px-4  
-                                rounded" style={{ width: 200, cursor: "pointer" }}
-                            >Perfil</button>
+                    );
+                } else {
+                    return (
+                        <div className="flex flex-col bg-green-500" style={{ height: height }}>
+                            <div className="text-center px-6 py-6 my-12">
+                                <h1>Mochilleando</h1>
+                            </div>
+                            <div className="text-center px-6 py-6 ">
+                                <button className="bg-transparent font-semibold 
+                                    hover:text-white py-2 px-4  
+                                    rounded" style={{ width: 200, cursor: "pointer" }}
+                                >Perfil</button>
+                            </div>
+                            <div className="text-center px-6 py-6 ">
+                                <button className="bg-transparent font-semibold 
+                                    hover:text-white py-2 px-4  
+                                    rounded" style={{ width: 200, cursor: "pointer" }}
+                                >Seguidores</button>
+                            </div>
+                            <div className="text-center px-6 py-6 ">
+                                <button className="bg-transparent font-semibold 
+                                    hover:text-white py-2 px-4 
+                                    rounded" style={{ width: 200, cursor: "pointer" }}
+                                >Seguidos</button>
+                            </div>
+                            <div className="text-center px-6 py-6 ">
+                                <button className="bg-transparent font-semibold 
+                                    hover:text-white py-2 px-4 
+                                    rounded" style={{ width: 200, cursor: "pointer" }}
+                                >Configuracion</button>
+                            </div>
+                            <div className="text-center px-6 py-6 my-12">
+                                <button className="bg-transparent font-semibold 
+                                    hover:text-white  
+                                    rounded" style={{ width: 200, cursor: "pointer" }}
+                                    onClick={() => app.auth().signOut()}
+                                >Cerrar Sesion</button>
+                            </div>
                         </div>
-                        <div className="text-center px-6 py-6 ">
-                            <button className="bg-transparent font-semibold 
-                                hover:text-white py-2 px-4  
-                                rounded" style={{ width: 200, cursor: "pointer" }}
-                            >Seguidores</button>
-                        </div>
-                        <div className="text-center px-6 py-6 ">
-                            <button className="bg-transparent font-semibold 
-                                hover:text-white py-2 px-4 
-                                rounded" style={{ width: 200, cursor: "pointer" }}
-                            >Seguidos</button>
-                        </div>
-                        <div className="text-center px-6 py-6 ">
-                            <button className="bg-transparent font-semibold 
-                                hover:text-white py-2 px-4 
-                                rounded" style={{ width: 200, cursor: "pointer" }}
-                            >Configuracion</button>
-                        </div>
-                        <div className="text-center px-6 py-6 my-12">
-                            <button className="bg-transparent font-semibold 
-                                hover:text-white  
-                                rounded" style={{ width: 200, cursor: "pointer" }}
-                                onClick={() => app.auth().signOut()}
-                            >Cerrar Sesion</button>
-                        </div>
-                    </div>
-                );
+                    );
+                }
             }
         }
     }
