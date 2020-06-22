@@ -19,8 +19,8 @@ const Map = ({ setpoints }: any) => {
             window.points = [];
 
             window.map = new window.google.maps.Map(ref.current, {
-                zoom: 3,
-                center: { lat: -11.74387987225271, lng: -78.06427870451063 },
+                zoom: 5,
+                center: { lat: -9.19777751008936, lng: -75.28101863230539 },
                 mapTypeId: "terrain",
             });
 
