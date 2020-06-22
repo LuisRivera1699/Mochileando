@@ -129,7 +129,7 @@ export default function Header({ history, state, height }: any): ReactElement {
                 } else {
                     return (
                         <div className="flex flex-col bg-green-500" style={{ height: height }}>
-                            <div className="text-center px-6 py-6 my-12">
+                            <div className="text-center px-6 py-6 my-6">
                                 <h1>Mochilleando</h1>
                             </div>
                             <div className="text-center px-6 py-6 ">
