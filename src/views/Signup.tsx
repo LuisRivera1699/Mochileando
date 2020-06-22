@@ -1,10 +1,10 @@
 import { useHistory } from "react-router-dom";
 import { app } from "../firebaseConfig";
-import React, { useState } from "react";
+import React from "react";
 import Header from "../components/Header";
 
 const Signup = () => {
-    const [error, seterror] = useState("");
+    // const [error, seterror] = useState("");
 
     let history = useHistory();
 
@@ -34,7 +34,7 @@ const Signup = () => {
                 history.push("/");
             })
             .catch((error: any) => {
-                seterror(error.message);
+                // seterror(error.message);
             });
     };
 

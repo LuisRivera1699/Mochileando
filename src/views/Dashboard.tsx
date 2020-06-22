@@ -28,6 +28,7 @@ const Dashboard = ({ history }: any) => {
                     <Header history={history} state="welcome" />
                     <div className="grid-body">
                         <div className="pub-tag">
+                            <h1>{nombre}</h1>
                             <h2>Publicaci&oacute;n</h2>
                         </div>
                         <div className="pub-container">
@@ -50,7 +51,7 @@ const Dashboard = ({ history }: any) => {
                                 </p>
                             </div>
                             <div className="pub-foto">
-                                <img src={require("../paisaje.png")} />
+                                <img src={require("../paisaje.png")} alt="paisaje" />
                             </div>
                         </div>
                     </div>
