@@ -40,7 +40,7 @@ export default function RecoveryPassword(): ReactElement {
                     id="email"
                     placeholder="email"
                     ref={emailInput}
-                />
+                    required />
                 {error && (
                     <p className="mt-2 text-red-500 text-xs italic">{error}</p>
                 )}

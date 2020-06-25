@@ -59,17 +59,19 @@ const Modal = ({ show, close }: any) => {
                                 <input
                                     type="text"
                                     name="titulo"
-                                    placeholder="Título" />
+                                    placeholder="Título"
+                                    required />
                                 <br />
                                 <label className="relative align-top" style={{ marginRight: "105px" }}>¡Cuéntanos!: </label>
                                 <textarea
                                     name="descripcion"
                                     rows={8}
                                     cols={45}
-                                    placeholder="Descripción" />
+                                    placeholder="Descripción"
+                                    required />
                                 <br />
                                 <label>¿Qué tipo de viaje hiciste?: </label>
-                                <select name="tipoviaje">
+                                <select name="tipoviaje" required>
                                     <option value="departamental">Departamental</option>
                                     <option value="provincial">Provincial</option>
                                 </select>
@@ -79,7 +81,8 @@ const Modal = ({ show, close }: any) => {
                                     type="file"
                                     name="imagenes"
                                     placeholder="Imágenes" multiple
-                                    onChange={handleImageUploaded} />
+                                    onChange={handleImageUploaded}
+                                    required />
                                 <br />
                                 <input
                                     className="btn-continue"

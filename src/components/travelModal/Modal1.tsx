@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Map } from '../Map';
 import { app } from '../../firebaseConfig'
 import { Auth } from '../../context/AuthContext';
@@ -8,25 +8,23 @@ const Modal1 = (props: any) => {
     const [points, setPoints] = useState([])
     const { usuario } = useContext(Auth);
 
-    useEffect(
-        () => {
-            console.log(points);
-        }
-    );
-
     const handleCreateTravel = async () => {
-        let ref = app.storage().ref().child('publication').child(usuario!!.uid)
-        const fileName = props.imagennombre;
-        ref = ref.child(fileName);
-        ref.put(props.imagen).then(snapshot => { console.log("done") })
-        app.firestore().collection("users").doc(usuario!!.uid).collection("travells").doc().set({
-            titulo: props.titulo,
-            descripcion: props.descripcion,
-            tipoviaje: props.tipoviaje,
-            imagenes: ref.fullPath,
-            points: points
-        });
-        FinalClosure();
+        if (points.length === 0) {
+            window.alert("Por favor, ingrese puntos de parada en su publicación.")
+        } else {
+            let ref = app.storage().ref().child('publication').child(usuario!!.uid)
+            const fileName = props.imagennombre;
+            ref = ref.child(fileName);
+            ref.put(props.imagen).then(snapshot => { console.log("done") })
+            app.firestore().collection("users").doc(usuario!!.uid).collection("travells").doc().set({
+                titulo: props.titulo,
+                descripcion: props.descripcion,
+                tipoviaje: props.tipoviaje,
+                imagenes: ref.fullPath,
+                points: points
+            });
+            FinalClosure();
+        }
     }
 
     const FinalClosure = () => {

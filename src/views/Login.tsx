@@ -81,6 +81,7 @@ const Login = ({ history }: any) => {
                             type="text"
                             name="usuario"
                             placeholder="Ingresa tu email"
+                            required
                         />
                     </div>
                     <div className="password-container">
@@ -89,6 +90,7 @@ const Login = ({ history }: any) => {
                             type="password"
                             name="clave"
                             placeholder="Ingresa tu clave"
+                            required
                         />
                         <div
                             className="text-gray-400"
