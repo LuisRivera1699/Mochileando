@@ -8,6 +8,7 @@ const Signup = () => {
     // const [error, seterror] = useState("");
     const [usedmailerror, setusedmailerror] = useState(false)
     const [weakpassworderror, setweakpassworderror] = useState(false)
+    const date = new Date(Date.now()).getFullYear()
 
     let history = useHistory();
 
@@ -35,6 +36,14 @@ const Signup = () => {
         nacimiento.style.borderColor = "";
         nacimiento.style.borderWidth = "0px";
 
+        const fecnac = new Date(nacimiento.value).getFullYear()
+        console.log(fecnac)
+        console.log(date)
+
+        if ((date - fecnac) < 14) {
+            window.alert("No nos engañas pillin, tu eres menor a 14 años");
+            return 0
+        }
 
         await app
             .auth()
