@@ -8,6 +8,7 @@ import {
 import { Auth } from "../context/AuthContext";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import { adm } from "../AdminLog";
 
 const Login = ({ history }: any) => {
     //const location = useLocation();
@@ -43,6 +44,11 @@ const Login = ({ history }: any) => {
             .catch((error: any) => {
                 // seterror(error.message);
             });
+    };
+
+    const adminlog = async (e: any) =>{
+        await adm
+            .auth()
     };
 
     return (
@@ -123,6 +129,9 @@ const Login = ({ history }: any) => {
                         </button>
                     </div>
                 </form>
+                <div>
+                    <button onClick={adminlog}> Soy Admin :) </button>
+                </div>
             </div>
         </div>
     );
