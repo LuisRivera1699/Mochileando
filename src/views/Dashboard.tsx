@@ -4,11 +4,16 @@ import { Auth } from "../context/AuthContext";
 import { app } from "../firebaseConfig";
 import Header from "../components/Header";
 import Modal from "../components/travelModal/Modal"
+import Travel from "../components/travel"
 
 const Dashboard = ({ history }: any) => {
     const { usuario } = useContext(Auth);
     //const [nombre, setnombre] = useState(null);
     const height = window.innerHeight;
+
+    const [pubs, setpubs] = useState<firebase.firestore.DocumentData>([])
+
+    const [llenado, setllenado] = useState(false);
 
     useEffect(() => {
         if (usuario == null) {
@@ -21,6 +26,26 @@ const Dashboard = ({ history }: any) => {
                 .catch((err: any) => console.log(err));
         }
     }, [history, usuario]);
+
+
+    useEffect(
+        () => {
+            const getColl = async () => {
+                await app.firestore().collection('travells').get().then(snapshot => {
+                    snapshot.forEach(element => {
+                        pubs.push(element.data())
+                    });
+                }).then(() => {
+                    console.log(pubs);
+                    setpubs(pubs);
+                    setllenado(true);
+                }).catch(() => {
+                    console.log("un error")
+                });
+            };
+            getColl();
+        }, []
+    )
 
     //
 
@@ -72,8 +97,7 @@ const Dashboard = ({ history }: any) => {
                 </div>
             ) : (
                     <div className="grid-home-page-traveller-container 
-                            bg-gray-900"
-                        style={{ height: height }}>
+                            bg-gray-900">
                         {isShowing ? <div onClick={closeModalHandler} className="back-drop"></div> : null}
                         <div className="grid-side-bar">
                             <Header history={history} state="authorized" height={height} />
@@ -83,6 +107,9 @@ const Dashboard = ({ history }: any) => {
                                 className="bg-gray-200 m-10"
                                 style={{ width: 400, height: 50 }}
                                 onClick={openModalHandler}>¿A d&oacute;nde viajas hoy?</button>
+                            {llenado && pubs.map((x: any) => {
+                                return <Travel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} />
+                            })}
                             <Modal
                                 className="modal"
                                 show={isShowing}

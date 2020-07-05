@@ -16,13 +16,19 @@ const Modal1 = (props: any) => {
             const fileName = props.imagennombre;
             ref = ref.child(fileName);
             ref.put(props.imagen).then(snapshot => { console.log("done") })
-            app.firestore().collection("users").doc(usuario!!.uid).collection("travells").doc().set({
-                titulo: props.titulo,
-                descripcion: props.descripcion,
-                tipoviaje: props.tipoviaje,
-                imagenes: ref.fullPath,
-                points: points
-            });
+            if (usuario == null) {
+                console.log('No existe un usuario')
+            } else {
+                app.firestore().collection("travells").doc().set({
+                    creador: app.firestore().collection('users').doc(usuario.uid),
+                    titulo: props.titulo,
+                    descripcion: props.descripcion,
+                    tipoviaje: props.tipoviaje,
+                    imagenes: ref.fullPath,
+                    points: points
+                });
+            }
+
             FinalClosure();
         }
     }
