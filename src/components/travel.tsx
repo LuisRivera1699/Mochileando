@@ -26,6 +26,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
     useEffect(() => {
         getImage();
         fetchComments();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getImage = async () => {
@@ -79,6 +80,9 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                 }`,
             });
         fetchComments();
+        if (textArea.current) {
+            textArea.current.value = "";
+        }
     };
 
     return (
@@ -125,7 +129,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                 {comments
                     .sort((a: any, b: any) => {
                         // @ts-ignore
-                        return new Date(a.fecha) - new Date(b.fecha);
+                        return new Date(b.fecha) - new Date(a.fecha);
                     })
                     .map((comment) => (
                         <div className="mt-10">
