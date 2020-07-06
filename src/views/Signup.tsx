@@ -55,6 +55,10 @@ const Signup = () => {
                     apellido: apellido.value,
                     sexo: sexo.value,
                     feNacimiento: nacimiento.value,
+                }).then(
+                    (result) => { alert(result) }
+                ).catch(error => {
+                    alert(error.message)
                 });
                 history.push("/");
             })

@@ -11,6 +11,10 @@ const Travel = ({ titulo, descripcion, imagen }: any) => {
         }, []
     )
 
+    const performLike = async () => {
+
+    }
+
     const getImage = async () => {
         await app
             .storage()
