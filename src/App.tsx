@@ -8,6 +8,7 @@ import Dashboard from "./views/Dashboard";
 import UserGuide from "./views/UserGuide";
 import Signup from "./views/Signup";
 import RecoveryPassword from "./views/RecoveryPassword";
+import Config from "./views/Config";
 
 const App = () => (
     <AuthContext>
@@ -24,6 +25,9 @@ const App = () => (
                 </Route>
                 <Route exact path="/login">
                     <Login />
+                </Route>
+                <Route exact path="/updateData">
+                    <Config />
                 </Route>
                 <Route exact path="/signup">
                     <Signup />
