@@ -356,3 +356,13 @@ div.travel-image{
   max-width: 30%;
   
 }
+
+.like-button {
+  position: relative;
+  float: right;
+  margin: 10px;
+}
+
+.like-button:hover {
+  cursor: pointer;
+}
