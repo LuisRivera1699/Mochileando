@@ -42,7 +42,22 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
             });
     };
 
-    console.log("Aaaaaaaa", comments);
+    const getCurrentDate = () => {
+        const currentdate = new Date();
+        return (
+            currentdate.getDate() +
+            "/" +
+            (currentdate.getMonth() + 1) +
+            "/" +
+            currentdate.getFullYear() +
+            " " +
+            currentdate.getHours() +
+            ":" +
+            currentdate.getMinutes() +
+            ":" +
+            currentdate.getSeconds()
+        );
+    };
 
     const setComment = async () => {
         const db = app.firestore();
@@ -58,7 +73,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
             .collection("comentarios")
             .add({
                 comentario: textArea?.current?.value,
-                fecha: "02/19/19",
+                fecha: getCurrentDate(),
                 usuario: `${currentUser?.nombre || ""} ${
                     currentUser?.apellido || ""
                 }`,
@@ -106,29 +121,24 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                         Comentar
                     </button>
                 </div>
-                <div className="mt-10">
-                    <div className="flex">
-                        <h4 className="font-bold">Nombre</h4>
-                        <span className="ml-2">-</span>
-                        <span className="ml-2">05/07/2020</span>
-                    </div>
-                    <p className="mt-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Doloremque ipsa molestiae dolorum dolore, eum quos autem
-                        nihil eaque cumque impedit consectetur voluptatem
-                        voluptates earum non et officia pariatur amet illum.
-                    </p>
-                </div>
-                {comments.map((comment) => (
-                    <div className="mt-10">
-                        <div className="flex">
-                            <h4 className="font-bold">{comment?.usuario}</h4>
-                            <span className="ml-2">-</span>
-                            <span className="ml-2">{comment?.fecha}</span>
+
+                {comments
+                    .sort((a: any, b: any) => {
+                        // @ts-ignore
+                        return new Date(a.fecha) - new Date(b.fecha);
+                    })
+                    .map((comment) => (
+                        <div className="mt-10">
+                            <div className="flex">
+                                <h4 className="font-bold">
+                                    {comment?.usuario}
+                                </h4>
+                                <span className="ml-2">-</span>
+                                <span className="ml-2">{comment?.fecha}</span>
+                            </div>
+                            <p className="mt-4">{comment?.comentario}</p>
                         </div>
-                        <p className="mt-4">{comment?.comentario}</p>
-                    </div>
-                ))}
+                    ))}
             </div>
         </div>
     );
