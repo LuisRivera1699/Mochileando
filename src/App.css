@@ -324,12 +324,15 @@
   font-weight: bold;
 }
 
-div.travel{
+.travel-box {
   background-color: #FFFFFF;
-  height: 250px;
   margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 20px;
+}
+
+div.travel{
+  height: 250px;
   display: flex;
 }
 
