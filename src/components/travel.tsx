@@ -34,7 +34,8 @@ const Travel = ({ titulo, descripcion, imagen }: any) => {
                     <h1><b>T&iacute;tulo: </b>  {titulo}</h1>
                 </div>
                 <div>
-                    <p><b>Descripci&oacute;n: </b>{descripcion}</p>
+                    <p><b>Descripci&oacute;n: </b></p>
+                    <p>{descripcion}</p>
                 </div>
 
             </div>
