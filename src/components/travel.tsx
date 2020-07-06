@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { app } from "../firebaseConfig";
 import { Auth } from "../context/AuthContext";
+import firebase from "firebase";
 
 const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
     const [imageUrl, setImageUrl] = useState("");
@@ -29,7 +30,16 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
     }, []);
 
     const performLike = async () => {
+        const comment = app.firestore().collection("travells").doc(id)
+        const increment = firebase.firestore.FieldValue.increment(1)
 
+        comment.update({
+            likesCounter: increment
+        }).then(() => {
+            console.log("success")
+        }).catch(error => {
+            console.log(error.message)
+        })
     }
 
     const getImage = async () => {
@@ -80,9 +90,10 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                 fecha: getCurrentDate(),
                 usuario: `${currentUser?.nombre || ""} ${
                     currentUser?.apellido || ""
-                }`,
+                    }`,
             });
         fetchComments();
+        performLike();
     };
 
     return (
