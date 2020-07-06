@@ -43,7 +43,7 @@ const Modal = ({ show, close }: any) => {
                 foto === false ? (
                     <div className="modal-wrapper"
                         style={{
-                            transform: show ? 'translateY(-10vh)' : 'translateY(-200vh)',
+                            transform: show ? 'translate(23%,80%)' : 'translateY(-200vh)',
                             opacity: show ? '1' : '0'
                         }}>
                         <div className="modal-header bg-green-500 flex items-center justify-center">
