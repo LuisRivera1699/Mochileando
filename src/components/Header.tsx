@@ -24,6 +24,10 @@ export default function Header({ history, state, height }: any): ReactElement {
         auxHistory.push("/updateData")
     }
 
+    const renderPerfil = () => {
+        auxHistory.push("/perfil")
+    }
+
     if (state === "welcome") {
         return (
             <div className="grid-header bg-green-500">
@@ -155,12 +159,13 @@ export default function Header({ history, state, height }: any): ReactElement {
                     return (
                         <div className="flex flex-col bg-green-500" style={{ height: height, position: "fixed" }}>
                             <div className="text-center px-6 py-6 my-6">
-                                <h1>Mochilleando</h1>
+                                <h1 className="hover:text-white pointer" onClick = {() => renderWelcome()}>Mochilleando</h1>
                             </div>
                             <div className="text-center px-6 py-6 ">
                                 <button className="bg-transparent font-semibold 
                                     hover:text-white py-2 px-4  
                                     rounded" style={{ width: 200, cursor: "pointer" }}
+                                    onClick={()=>renderPerfil()}
                                 >Perfil</button>
                             </div>
                             <div className="text-center px-6 py-6 ">

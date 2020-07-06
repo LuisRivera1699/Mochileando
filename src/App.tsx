@@ -9,6 +9,7 @@ import UserGuide from "./views/UserGuide";
 import Signup from "./views/Signup";
 import RecoveryPassword from "./views/RecoveryPassword";
 import Config from "./views/Config";
+import Perfil from "./views/Perfil";
 
 const App = () => (
     <AuthContext>
@@ -21,7 +22,7 @@ const App = () => (
                     <RecoveryPassword />
                 </Route>
                 <Route exact path="/perfil">
-                    <p>Perfil</p>
+                    <Perfil />
                 </Route>
                 <Route exact path="/login">
                     <Login />
