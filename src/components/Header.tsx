@@ -159,7 +159,7 @@ export default function Header({ history, state, height }: any): ReactElement {
                     return (
                         <div className="flex flex-col bg-green-500" style={{ height: height, position: "fixed" }}>
                             <div className="text-center px-6 py-6 my-6">
-                                <h1>Mochilleando</h1>
+                                <h1 className="hover:text-white pointer" onClick = {() => renderWelcome()}>Mochilleando</h1>
                             </div>
                             <div className="text-center px-6 py-6 ">
                                 <button className="bg-transparent font-semibold 
