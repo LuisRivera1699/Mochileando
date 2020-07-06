@@ -5,6 +5,7 @@ import { app } from "../firebaseConfig";
 import Header from "../components/Header";
 import Modal from "../components/travelModal/Modal"
 import Travel from "../components/travel"
+import BestTravel from "../components/besttravel";
 
 const Dashboard = ({ history }: any) => {
     const { usuario } = useContext(Auth);
@@ -66,33 +67,10 @@ const Dashboard = ({ history }: any) => {
             {!usuario ? (
                 <div className="grid-welcome-page-container bg-gray-900" style={{ height: window.innerHeight }}>
                     <Header history={history} state="welcome" />
-                    <div className="grid-body">
-                        <div className="pub-tag pt-12">
-                            <h2 className="text-white">Publicaci&oacute;n</h2>
-                        </div>
-                        <div className="pub-container bg-white">
-                            <div className="pub-text">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. In condimentum dignissim
-                                    facilisis. Donec tincidunt lacinia nisl vel
-                                    tincidunt. Sed pellentesque nunc in lacinia
-                                    lacinia. Etiam porta, velit nec ultricies
-                                    facilisis, lorem massa feugiat elit, ac
-                                    iaculis purus nunc id lectus. Phasellus
-                                    hendrerit, odio in tincidunt accumsan, magna
-                                    massa sollicitudin ligula, vitae cursus
-                                    turpis massa tempor leo. Nunc in sapien
-                                    suscipit, hendrerit urna at, dignissim
-                                    ligula. Pellentesque viverra, dolor quis
-                                    imperdiet ornare, mauris augue posuere sem,
-                                    in blandit lacus neque sit amet tellus.
-                                </p>
-                            </div>
-                            <div className="pub-foto flex items-center justify-center">
-                                <img src={require("../paisaje.png")} alt="paisaje" />
-                            </div>
-                        </div>
+                    <div className="traveldash">
+                        {llenado && pubs.map((x: any) => {
+                            return <BestTravel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} />
+                        })} 
                     </div>
                 </div>
             ) : (
