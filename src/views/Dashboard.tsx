@@ -5,7 +5,7 @@ import { app } from "../firebaseConfig";
 import Header from "../components/Header";
 import Modal from "../components/travelModal/Modal"
 import Travel from "../components/travel"
-import BestTravel from "../components/besttravel";
+import CarouselComponent from "./carousel.component";
 
 const Dashboard = ({ history }: any) => {
     const { usuario } = useContext(Auth);
@@ -67,10 +67,10 @@ const Dashboard = ({ history }: any) => {
             {!usuario ? (
                 <div className="grid-welcome-page-container bg-gray-900" style={{ height: window.innerHeight }}>
                     <Header history={history} state="welcome" />
-                    <div className="traveldash">
-                        {llenado && pubs.map((x: any) => {
-                            return <BestTravel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} />
-                        })} 
+                    <div className="best-travel">
+                        <div className= "App">
+                            <CarouselComponent />
+                        </div>
                     </div>
                 </div>
             ) : (
