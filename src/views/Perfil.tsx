@@ -1,6 +1,6 @@
 import React, {
     ReactElement,
-    useRef,
+    // useRef,
     useContext,
     useEffect,
     useState,
@@ -24,7 +24,7 @@ export default function Perfil(): ReactElement {
     const { usuario } = useContext(Auth);
     const [userData,setUserData]=useState<Datos>()
     const [publicData,setPublicData]=useState<firebase.firestore.DocumentData>([])
-    const date = new Date(Date.now()).getFullYear()
+    // const date = new Date(Date.now()).getFullYear()
     const [listo, setListo]=useState(false)
     //const [imageUrl,setImageUrl]=useState(true) 
 

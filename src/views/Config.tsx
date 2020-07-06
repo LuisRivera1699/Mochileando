@@ -1,6 +1,6 @@
 import React, {
     ReactElement,
-    useRef,
+    // useRef,
     useContext,
     useEffect,
     useState,
@@ -44,7 +44,7 @@ export default function Config(): ReactElement {
         }
     }, [history, usuario]);
 
-    const emailInput = useRef(null);
+    // const emailInput = useRef(null);
 
     const handleSignUp = async (e: any) => {
         e.preventDefault();

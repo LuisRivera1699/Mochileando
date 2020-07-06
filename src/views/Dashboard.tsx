@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useDebugValue } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { withRouter } from "react-router";
 import { Auth } from "../context/AuthContext";
 import { app } from "../firebaseConfig";
