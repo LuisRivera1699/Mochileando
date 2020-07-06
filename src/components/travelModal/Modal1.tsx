@@ -42,7 +42,7 @@ const Modal1 = (props: any) => {
 
         <div className="modal-wrapper"
             style={{
-                transform: props.show ? 'translateY(-20vh)' : 'translateY(-100vh)',
+                transform: props.show ? 'translate(23%,60%)' : 'translateY(-100vh)',
                 opacity: props.show ? '1' : '0'
             }}>
             <div className="modal-header bg-green-500 flex items-center justify-center">

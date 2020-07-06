@@ -20,6 +20,9 @@ export default function Header({ history, state, height }: any): ReactElement {
     const renderUserGuide = () => {
         auxHistory.push("/guia-de-usuario");
     }
+    const renderConfig = () => {
+        auxHistory.push("/updateData")
+    }
 
     if (state === "welcome") {
         return (
@@ -176,6 +179,7 @@ export default function Header({ history, state, height }: any): ReactElement {
                                 <button className="bg-transparent font-semibold 
                                     hover:text-white py-2 px-4 
                                     rounded" style={{ width: 200, cursor: "pointer" }}
+                                    onClick={()=>renderConfig()}
                                 >Configuracion</button>
                             </div>
                             <div className="text-center px-6 py-6 my-12">

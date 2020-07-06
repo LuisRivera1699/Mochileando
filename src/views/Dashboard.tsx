@@ -34,11 +34,11 @@ const Dashboard = ({ history }: any) => {
             const getColl = async () => {
                 await app.firestore().collection('travells').get().then(snapshot => {
                     snapshot.forEach(element => {
-                        pubs.push(element.data())
+                        pubs.push({...element.data(), id: element.id})
                     });
                 }).then(() => {
-                    console.log(pubs);
                     setpubs(pubs);
+                    console.log(pubs)
                     setllenado(true);
                 }).catch(() => {
                     console.log("un error")
@@ -86,7 +86,7 @@ const Dashboard = ({ history }: any) => {
                                 style={{ width: 400, height: 50 }}
                                 onClick={openModalHandler}>¿A d&oacute;nde viajas hoy?</button>
                             {llenado && pubs.map((x: any) => {
-                                return <Travel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} />
+                                return <Travel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} id={x.id} creador={x.creador} />
                             })}
                             <Modal
                                 className="modal"
