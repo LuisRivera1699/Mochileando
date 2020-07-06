@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { app } from '../firebaseConfig';
-import CarouselComponent from "./carousel.component";
+import CarouselComponent from "../views/carousel.component";
 
 const BestTravel = ({ titulo, descripcion, imagen }: any) => {
 
@@ -29,10 +29,10 @@ const BestTravel = ({ titulo, descripcion, imagen }: any) => {
     }
 
     return (
-        <div className="best-travel">
+        <div className="best-travel" >
             <div className= "App">
-                <CarouselComponent titulo={titulo} descripcion={descripcion} imagen={imageUrl}/>
-        </div>
+                <CarouselComponent />
+            </div>
         </div>
     )
 }
