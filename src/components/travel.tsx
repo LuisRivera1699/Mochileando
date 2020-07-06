@@ -1,18 +1,11 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { app } from "../firebaseConfig";
 import { Auth } from "../context/AuthContext";
-import { Console } from "console";
-
-interface Comentario {
-    comentario: string;
-    fecha: string;
-    usuario: string;
-}
 
 const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
     const [imageUrl, setImageUrl] = useState("");
 
-    const textArea = useRef(null);
+    const textArea = useRef<HTMLTextAreaElement>(null);
     const { usuario } = useContext(Auth);
 
     const [comments, setComments] = useState<any[]>([]);
@@ -27,17 +20,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
 
         const comentsResp = comments_aw.docs.map((doc) => doc.data());
 
-        comentsResp.forEach(async (com) => {
-            const user = await com.usuario.get();
-            setComments([
-                ...comments,
-                {
-                    comentario: com?.comentario,
-                    fecha: com?.fecha,
-                    usuario: user?.data()?.nombre,
-                },
-            ]);
-        });
+        setComments(comentsResp);
     };
 
     useEffect(() => {
@@ -57,6 +40,30 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
             .catch(function (error) {
                 console.log(error.message);
             });
+    };
+
+    console.log("Aaaaaaaa", comments);
+
+    const setComment = async () => {
+        const db = app.firestore();
+        const currentUserProm = await db
+            .collection("users")
+            .doc(usuario?.uid)
+            .get();
+
+        const currentUser = currentUserProm.data();
+
+        db.collection("travells")
+            .doc(id)
+            .collection("comentarios")
+            .add({
+                comentario: textArea?.current?.value,
+                fecha: "02/19/19",
+                usuario: `${currentUser?.nombre || ""} ${
+                    currentUser?.apellido || ""
+                }`,
+            });
+        fetchComments();
     };
 
     return (
@@ -93,19 +100,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                     <button
                         className="mt-5 block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                         onClick={() => {
-                            console.log(textArea.current);
-                            console.log(id);
-                            const db = app.firestore();
-                            db.collection("travells")
-                                .doc(id)
-                                .collection("comentarios")
-                                .add({
-                                    comentario: "Este es un comentario",
-                                    fecha: "02/19/19",
-                                    usuario: db
-                                        .collection("users")
-                                        .doc(usuario?.uid),
-                                });
+                            setComment();
                         }}
                     >
                         Comentar
@@ -124,6 +119,16 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                         voluptates earum non et officia pariatur amet illum.
                     </p>
                 </div>
+                {comments.map((comment) => (
+                    <div className="mt-10">
+                        <div className="flex">
+                            <h4 className="font-bold">{comment?.usuario}</h4>
+                            <span className="ml-2">-</span>
+                            <span className="ml-2">{comment?.fecha}</span>
+                        </div>
+                        <p className="mt-4">{comment?.comentario}</p>
+                    </div>
+                ))}
             </div>
         </div>
     );
