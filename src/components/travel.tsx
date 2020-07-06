@@ -26,6 +26,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
     useEffect(() => {
         getImage();
         fetchComments();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getImage = async () => {
