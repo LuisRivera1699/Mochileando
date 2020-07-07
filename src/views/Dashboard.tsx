@@ -5,7 +5,7 @@ import { app } from "../firebaseConfig";
 import Header from "../components/Header";
 import Modal from "../components/travelModal/Modal"
 import Travel from "../components/travel"
-import BestTravel from "../components/besttravel";
+import Besttravel from "../components/Besttravel"
 
 const Dashboard = ({ history }: any) => {
     const { usuario } = useContext(Auth);
@@ -68,9 +68,7 @@ const Dashboard = ({ history }: any) => {
                 <div className="grid-welcome-page-container bg-gray-900" style={{ height: window.innerHeight }}>
                     <Header history={history} state="welcome" />
                     <div className="traveldash">
-                        {llenado && pubs.map((x: any) => {
-                            return <BestTravel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} />
-                        })} 
+                        <Besttravel/>
                     </div>
                 </div>
             ) : (
@@ -85,9 +83,9 @@ const Dashboard = ({ history }: any) => {
                                 className="bg-gray-200 m-10"
                                 style={{ width: 400, height: 50 }}
                                 onClick={openModalHandler}>¿A d&oacute;nde viajas hoy?</button>
-                            {llenado && pubs.map((x: any) => {
-                                return <Travel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} id={x.id} creador={x.creador} />
-                            })}
+                                {llenado && pubs.map((x: any) => {
+                                    return <Travel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} id={x.id} creador={x.creador}/>
+                                })} 
                             <Modal
                                 className="modal"
                                 show={isShowing}
