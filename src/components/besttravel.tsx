@@ -1,41 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import { app } from '../firebaseConfig';
-import CarouselComponent from "./carousel.component";
+import React, {
+    ReactElement,
+    // useRef,
+    useContext,
+    useEffect,
+    useState,
+} from "react";
+import { app } from "../firebaseConfig";
 
-const BestTravel = ({ titulo, descripcion, imagen }: any) => {
+import { useHistory } from "react-router-dom";
+import { Auth } from "../context/AuthContext";
+import Carousel from "../components/Carousel"
+import { when } from "q";
 
-    const [imageUrl, setImageUrl] = useState("")
+
+
+interface Datos {
+    nombre?: string;
+    apellido?: string;
+    feNacimiento?:string;
+    sexo?:string;
+}
+
+export default function Besttravel(): ReactElement {
+    let history = useHistory();
+    const { usuario } = useContext(Auth);
+    const [userData,setUserData]=useState<Datos>()
+    const [publicData,setPublicData]=useState<firebase.firestore.DocumentData>([])
+    // const date = new Date(Date.now()).getFullYear()
+    const [listo, setListo]=useState(false)
+    //const [imageUrl,setImageUrl]=useState(true) 
+
+
+    useEffect(() => {
+        if (usuario == null) {
+        } else {
+            const UserData = async () => {
+                const Data = (
+                    await app.firestore()
+                    .collection("users")
+                    .doc(usuario.uid)
+                    .get()
+                ).data();
+                setUserData(Data);
+            }
+            UserData();
+        }
+
+    }, [history, usuario]);
 
     useEffect(
         () => {
-            getImage()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, []
+            
+                app.firestore().collection("travells").orderBy('likesCounter', 'desc').limit(3)
+                .get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        // doc.data() is never undefined for query doc snapshots
+                        console.log(doc.id, " => ", doc.data());
+                        console.log("holi")
+                        publicData.push({...doc.data(), id:doc.id});
+                        
+                        
+                    });
+                })
+                .then (
+                    () => {
+                        setPublicData(publicData);
+                        setListo(true);
+                    }
+                )
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+            
+        }
+
     )
 
-    const getImage = async () => {
-        await app
-            .storage()
-            .ref()
-            .child(imagen)
-            .getDownloadURL().then(
-                function (url) {
-                    setImageUrl(url)
-                }
-            ).catch(
-                function (error) {
-                    console.log(error.message)
-                }
-            )
-    }
+    return(
+        <div>
+            {
+                listo === true ? (
+                    <Carousel viajes={publicData}/>
 
-    return (
-        <div className="best-travel">
-            <div className= "App">
-                <CarouselComponent titulo={titulo} descripcion={descripcion} imagen={imageUrl}/>
+                ):(<p>No hay publicaciones</p>)
+            }
         </div>
-        </div>
-    )
+    );
 }
-
-export default BestTravel;
