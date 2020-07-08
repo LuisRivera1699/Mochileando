@@ -31,6 +31,7 @@ export default function Perfil(): ReactElement {
 
     useEffect(() => {
         if (usuario == null) {
+            history.push('/')
         } else {
             const UserData = async () => {
                 const Data = (
@@ -48,7 +49,7 @@ export default function Perfil(): ReactElement {
 
     useEffect(
         () => {
-            
+            if (usuario){
                 app.firestore().collection("travells").where("creador", "==", app.firestore().collection("users").doc(usuario!!.uid))
                 .get()
                 .then(function (querySnapshot) {
@@ -71,9 +72,10 @@ export default function Perfil(): ReactElement {
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
-            
+            } else {
+                
+            }      
         }
-
     )
 
     /*const getImage = async () => {

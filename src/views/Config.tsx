@@ -27,6 +27,7 @@ export default function Config(): ReactElement {
 
     useEffect(() => {
         if (usuario == null) {
+            history.push('/')
         } else {
             const UserData = async () => {
                 const Data = (
@@ -38,9 +39,7 @@ export default function Config(): ReactElement {
                 setUserData(Data);
             }
             UserData();
-        }
-        if (usuario) {
-            history.push("/updateData");
+            //history.push("/updateData");
         }
     }, [history, usuario]);
 
@@ -130,7 +129,7 @@ export default function Config(): ReactElement {
                             type="text"
                             name="email"
                             placeholder="Ingresa tu email"
-                            defaultValue={usuario!!.email||""}
+                            defaultValue={usuario?.email||""}
                             required />
                     </div>
                     <div className="fechaNac-reg-c">
