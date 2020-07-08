@@ -1,18 +1,11 @@
 import React, {
     ReactElement,
     // useRef,
-    useContext,
     useEffect,
     useState,
 } from "react";
 import { app } from "../firebaseConfig";
-
-import { useHistory } from "react-router-dom";
-import { Auth } from "../context/AuthContext";
 import Carousel from "../components/Carousel"
-import { when } from "q";
-
-
 
 interface Datos {
     nombre?: string;
@@ -22,31 +15,10 @@ interface Datos {
 }
 
 export default function Besttravel(): ReactElement {
-    let history = useHistory();
-    const { usuario } = useContext(Auth);
-    const [userData,setUserData]=useState<Datos>()
     const [publicData,setPublicData]=useState<firebase.firestore.DocumentData>([])
     // const date = new Date(Date.now()).getFullYear()
     const [listo, setListo]=useState(false)
     //const [imageUrl,setImageUrl]=useState(true) 
-
-
-    useEffect(() => {
-        if (usuario == null) {
-        } else {
-            const UserData = async () => {
-                const Data = (
-                    await app.firestore()
-                    .collection("users")
-                    .doc(usuario.uid)
-                    .get()
-                ).data();
-                setUserData(Data);
-            }
-            UserData();
-        }
-
-    }, [history, usuario]);
 
     useEffect(
         () => {
@@ -58,9 +30,7 @@ export default function Besttravel(): ReactElement {
                         // doc.data() is never undefined for query doc snapshots
                         console.log(doc.id, " => ", doc.data());
                         console.log("holi")
-                        publicData.push({...doc.data(), id:doc.id});
-                        
-                        
+                        publicData.push({...doc.data(), id:doc.id});       
                     });
                 })
                 .then (

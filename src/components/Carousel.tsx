@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel } from 'react-responsive-carousel';
 import { app } from "../firebaseConfig";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -67,17 +67,17 @@ export default function CarouselComponent({viajes}:any) {
                 <div className="publi" style={{backgroundColor:"#101925"}}>
                     <h1 className="titulopubli" style={{color: "white", fontSize:"2em"}}>{viaje1.titulo}</h1>
                     <p style={{color: "white", fontSize:"0.9em"}}>{viaje1.descripcion}</p>
-                    <img src={imageUrl1} />
+                    <img src={imageUrl1} alt="viaje" />
                 </div>
                 <div className="publi" style={{backgroundColor:"#101925"}}>
                     <h1 className="titulopubli" style={{color: "white", fontSize:"2em"}}>{viaje2.titulo}</h1>
                     <p style={{color: "white", fontSize:"0.9em"}}>{viaje2.descripcion}</p>
-                    <img src={imageUrl2} />
+                    <img src={imageUrl2} alt="viaje" />
                 </div>
                 <div className="publi" style={{backgroundColor:"#101925"}}>
                     <h1 className="titulopubli" style={{color: "white", fontSize:"2em"}}>{viaje3.titulo}</h1>
                     <p style={{color: "white", fontSize:"0.9em"}}>{viaje3.descripcion}</p>
-                    <img src={imageUrl3}/>
+                    <img src={imageUrl3} alt="viaje" />
                 </div>
             </Carousel>
         </div>

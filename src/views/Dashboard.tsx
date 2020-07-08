@@ -5,7 +5,7 @@ import { app } from "../firebaseConfig";
 import Header from "../components/Header";
 import Modal from "../components/travelModal/Modal"
 import Travel from "../components/travel"
-import Besttravel from "../components/Besttravel"
+import Besttravel from "../components/besttravel"
 
 const Dashboard = ({ history }: any) => {
     const { usuario } = useContext(Auth);
