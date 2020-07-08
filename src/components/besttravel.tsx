@@ -1,41 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import { app } from '../firebaseConfig';
-import CarouselComponent from "./carousel.component";
+import React, {
+    ReactElement,
+    // useRef,
+    useEffect,
+    useState,
+} from "react";
+import { app } from "../firebaseConfig";
+import Carousel from "../components/Carousel"
 
-const BestTravel = ({ titulo, descripcion, imagen }: any) => {
+interface Datos {
+    nombre?: string;
+    apellido?: string;
+    feNacimiento?:string;
+    sexo?:string;
+}
 
-    const [imageUrl, setImageUrl] = useState("")
+export default function Besttravel(): ReactElement {
+    const [publicData,setPublicData]=useState<firebase.firestore.DocumentData>([])
+    // const date = new Date(Date.now()).getFullYear()
+    const [listo, setListo]=useState(false)
+    //const [imageUrl,setImageUrl]=useState(true) 
 
     useEffect(
         () => {
-            getImage()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, []
+            
+                app.firestore().collection("travells").orderBy('likesCounter', 'desc').limit(3)
+                .get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        // doc.data() is never undefined for query doc snapshots
+                        console.log(doc.id, " => ", doc.data());
+                        console.log("holi")
+                        publicData.push({...doc.data(), id:doc.id});       
+                    });
+                })
+                .then (
+                    () => {
+                        setPublicData(publicData);
+                        setListo(true);
+                    }
+                )
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+            
+        }
+
     )
 
-    const getImage = async () => {
-        await app
-            .storage()
-            .ref()
-            .child(imagen)
-            .getDownloadURL().then(
-                function (url) {
-                    setImageUrl(url)
-                }
-            ).catch(
-                function (error) {
-                    console.log(error.message)
-                }
-            )
-    }
+    return(
+        <div>
+            {
+                listo === true ? (
+                    <Carousel viajes={publicData}/>
 
-    return (
-        <div className="best-travel">
-            <div className= "App">
-                <CarouselComponent titulo={titulo} descripcion={descripcion} imagen={imageUrl}/>
+                ):(<p>No hay publicaciones</p>)
+            }
         </div>
-        </div>
-    )
+    );
 }
-
-export default BestTravel;

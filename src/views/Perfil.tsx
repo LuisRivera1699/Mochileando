@@ -98,9 +98,9 @@ export default function Perfil(): ReactElement {
                 <Header history={history} state="authorized" height={window.innerHeight} />
             </div>
             <div className="perfil">
-                <p className="perfilnombre">{userData?.nombre} {userData?.apellido}</p>
-                <p className="perfildatos">Sexo: {userData?.sexo}</p>
-                <p className="perfildatos">Fecha de Nacimiento: {userData?.feNacimiento}</p>
+                <p className="perfilnombre" style={{fontSize: "2em", color: "#1da569", textAlign:"center" }}>{userData?.nombre} {userData?.apellido}</p>
+                <p className="perfildatos" style={{fontSize: "1em", color: "white", textAlign:"center" }}>Sexo: {userData?.sexo}</p>
+                <p className="perfildatos" style={{fontSize: "1em", color: "white", textAlign:"center" }}>Fecha de Nacimiento: {userData?.feNacimiento}</p>
                 {listo && publicData.map((element:any) => {
                     return <Travel titulo={element.titulo} descripcion={element.descripcion} imagen={element.imagenes} id={element.id} creador={element.creador} />
                 })}
