@@ -28,10 +28,11 @@ const EditComment = ({ show, close, comment, travel }: any) => {
 
     return (
         <div style={{ height: 0 }}>
-                    <div className="modal-wrapper2 z-50"
+                    <div className="modal-wrapper2 z-50 m-0"
                         style={{
-                            
-                            transform: show ? 'translate(23%,500%)' : 'translateY(-200vh)',
+                            transform: "translate(0, -50%)",
+                            left: "50%",
+                            top: show ? '50%' : '-50%',
                             position: show ? "fixed" : "absolute", 
                             opacity: show ? '1' : '0'
                         }}>

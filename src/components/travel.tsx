@@ -171,6 +171,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador, isEditable = true }:
     }
 
     const closeEditComment = () => {
+        document.documentElement.style.overflow = "auto";
         setisshowing(false);
     }
     const [newTitle, setNewTitle] = useState(titulo)
