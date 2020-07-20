@@ -46,7 +46,7 @@ const PublicMap = ({ points }: any) => {
 
             return () => script.removeEventListener(`load`, onLoad);
         } else onLoad();
-    }, []);
+    }, [points]);
 
     return (
         <>
