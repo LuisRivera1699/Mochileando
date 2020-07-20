@@ -28,19 +28,21 @@ const EditComment = ({ show, close, comment, travel }: any) => {
 
     return (
         <div style={{ height: 0 }}>
-                    <div className="modal-wrapper"
+                    <div className="modal-wrapper2 z-50"
                         style={{
+                            
                             transform: show ? 'translate(23%,500%)' : 'translateY(-200vh)',
+                            position: show ? "fixed" : "absolute", 
                             opacity: show ? '1' : '0'
                         }}>
                         <div className="modal-header bg-green-500 flex items-center justify-center">
                             <h3 className="text-white">Editar Comentario</h3>
                             <span className="close-modal-btn" onClick={close}
-                                style={{ position: "relative", left: "200px", top: "-1px" }}>×</span>
+                                style={{ position: "relative", left: "100px", top: "-1px" }}>×</span>
                         </div>
                         <div className="modal-body">
                             <form onSubmit={handleComment}>
-                                <label>Nuevo Comentario: </label>
+                                <label>Editar Comentario: </label>
                                 <input
                                     type="text"
                                     name="comentario"
