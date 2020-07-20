@@ -104,7 +104,7 @@ export default function Perfil(): ReactElement {
                 <p className="perfildatos" style={{fontSize: "1em", color: "white", textAlign:"center" }}>Sexo: {userData?.sexo}</p>
                 <p className="perfildatos" style={{fontSize: "1em", color: "white", textAlign:"center" }}>Fecha de Nacimiento: {userData?.feNacimiento}</p>
                 {listo && publicData.map((element:any) => {
-                    return <Travel titulo={element.titulo} descripcion={element.descripcion} imagen={element.imagenes} id={element.id} creador={element.creador} />
+                    return <Travel titulo={element.titulo} descripcion={element.descripcion} imagen={element.imagenes} id={element.id} creador={element.creador} isEditable={true} />
                 })}
             </div>
         </div>
