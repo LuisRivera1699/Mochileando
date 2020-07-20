@@ -159,7 +159,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador, isEditable = true }:
     const openEditComment = async (e: any) => {
         setcommentid(e);
         setisshowing(true);
-        console.log(e);
+        document.documentElement.style.overflow = "hidden";
     }
 
     const eliminarPublicacion = async () => {
