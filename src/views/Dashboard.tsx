@@ -84,7 +84,7 @@ const Dashboard = ({ history }: any) => {
                                 style={{ width: 400, height: 50 }}
                                 onClick={openModalHandler}>¿A d&oacute;nde viajas hoy?</button>
                                 {llenado && pubs.map((x: any) => {
-                                    return <Travel titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} id={x.id} creador={x.creador}/>
+                                    return <Travel points={x.points} titulo={x.titulo} descripcion={x.descripcion} imagen={x.imagenes} id={x.id} creador={x.creador}/>
                                 })} 
                             <Modal
                                 className="modal"

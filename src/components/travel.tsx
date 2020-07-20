@@ -4,8 +4,9 @@ import { Auth } from "../context/AuthContext";
 import firebase from "firebase";
 
 import EditComment from "./EditComment";
+import { PublicMap } from "./PublicMap";
 
-const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
+const Travel = ({ titulo, descripcion, imagen, id, creador, points }: any) => {
     const [imageUrl, setImageUrl] = useState("");
     const [newImagen, setNewImagen] = useState(imagen);
     const comment = app.firestore().collection("travells").doc(id);
@@ -192,6 +193,8 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
     const [newDesc, setNewDesc] = useState(descripcion);
     const [localImg, setLocalImg] = useState<any>();
 
+    const [showMap, setShowMap] = useState(false);
+
     return (
         <div className="travel-box">
             <svg
@@ -344,7 +347,15 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                             required
                         />
                     ) : (
-                        <img className="image-trav" src={imageUrl} alt="" />
+                        <img
+                            onClick={() => {
+                                console.log(points);
+                                setShowMap(true);
+                            }}
+                            className="image-trav"
+                            src={imageUrl}
+                            alt=""
+                        />
                     )}
                 </div>
                 {usuario?.uid === creadorid ? (
@@ -440,6 +451,49 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                 comment={commentid}
                 travel={id}
             ></EditComment>
+
+            {showMap && (
+                <div>
+                    <div
+                        style={{
+                            position: "fixed",
+                            width: "100vw",
+                            top: "0",
+                            left: "0",
+                            height: "100vh",
+                            background: "rgba(48, 49, 48, 0.42)",
+                        }}
+                    ></div>
+                    <div
+                        className="max-w-sm rounded overflow-hidden shadow-lg"
+                        style={{
+                            position: "fixed",
+                            top: "30px",
+                            background: "white",
+                            left: "45%",
+                            minWidth: "510px",
+                        }}
+                    >
+                        <span
+                            onClick={() => {
+                                setShowMap(false);
+                            }}
+                            className="close-modal-btn"
+                            style={{
+                                position: "relative",
+                                right: "5px",
+                                top: "-5px",
+                                color: "black",
+                            }}
+                        >
+                            ×
+                        </span>
+                        <div className="px-6 py-4">
+                            <PublicMap points={points}></PublicMap>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
