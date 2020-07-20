@@ -41,6 +41,7 @@ export default function Perfil(): ReactElement {
                     .get()
                 ).data();
                 setUserData(Data);
+                
             }
             UserData();
         }
@@ -60,13 +61,12 @@ export default function Perfil(): ReactElement {
                         console.log(app.firestore().collection("users").doc(usuario!!.uid))
                         publicData.push({...doc.data(), id:doc.id});
                         
-                        
                     });
                 })
                 .then (
                     () => {
                         setPublicData(publicData);
-                        setListo(true);
+                        setListo(true);                    
                     }
                 )
                 .catch(function (error) {
