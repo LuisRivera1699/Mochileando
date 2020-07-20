@@ -3,14 +3,20 @@ import { app } from "../firebaseConfig";
 import { Auth } from "../context/AuthContext";
 import firebase from "firebase";
 
-const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
+import EditComment from './EditComment';
+
+const Travel = ({ titulo, descripcion, imagen, id, creador}: any) => {
     const [imageUrl, setImageUrl] = useState("");
     const comment = app.firestore().collection("travells").doc(id)
     const textArea = useRef<HTMLTextAreaElement>(null);
     const { usuario } = useContext(Auth);
 
+
     const [comments, setComments] = useState<any[]>([]);
     const [liked, setLiked] = useState(false)
+
+    const creadorid = creador.id;
+    console.log(creadorid);
 
     const fetchComments = async () => {
         const db = app.firestore();
@@ -20,7 +26,7 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
             .collection("comentarios")
             .get();
 
-        const comentsResp = comments_aw.docs.map((doc) => doc.data());
+        const comentsResp = comments_aw.docs.map((doc) => ({id: doc.id, ...doc.data() }));
 
         setComments(comentsResp);
     };
@@ -136,12 +142,34 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                 usuario: `${currentUser?.nombre || ""} ${
                     currentUser?.apellido || ""
                     }`,
+                uid: usuario?.uid,
             });
         fetchComments();
         if (textArea.current) {
             textArea.current.value = "";
         }
     };
+
+    const [isShowing, setisshowing] = useState(false);
+    const [commentid, setcommentid] = useState("");
+
+    const openEditComment = async (e: any) => {
+        setcommentid(e);
+        setisshowing(true);
+        console.log(e);
+    }
+
+    const eliminarPublicacion = async () => {
+            await app.firestore()
+            .collection("travells")
+            .doc(id)
+            .delete()
+            window.location.reload(false);
+    }
+
+    const closeEditComment = () => {
+        setisshowing(false);
+    }
 
     return (
         <div className="travel-box">
@@ -163,6 +191,11 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                 <div className="travel-image">
                     <img className="image-trav" src={imageUrl} alt="" />
                 </div>
+                {
+                    usuario?.uid === creadorid ? (
+                        <button onClick={eliminarPublicacion}>Eliminar</button>
+                    ):(<p> </p>)
+                }
             </div>
 
             <div className="p-5 text-left">
@@ -200,10 +233,31 @@ const Travel = ({ titulo, descripcion, imagen, id, creador }: any) => {
                                 <span className="ml-2">-</span>
                                 <span className="ml-2">{comment?.fecha}</span>
                             </div>
-                            <p className="mt-4">{comment?.comentario}</p>
+                            <div>
+                                <p className="mt-4">{comment?.comentario}</p>
+                                {
+                                      usuario?.uid === comment!.uid ? (
+                                        <button onClick={() => openEditComment(comment.id)} className="text-base focus:outline-none flex justify-center px-1 py-1 rounded cursor-pointer hover:bg-blue-700 hover:text-blue-100 bg-blue-100 text-blue-700 border duration-200 ease-in-out border-blue-600 transition">
+                                            <div className="flex leading-5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" className="feather feather-edit w-5 h-5 mr-1">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            Edit</div>
+                                        </button>
+                                    ):(<p> </p>)
+                                }
+                            </div>
                         </div>
                     ))}
             </div>
+            <EditComment
+                className="modal"
+                show={isShowing}
+                close={closeEditComment}
+                comment={commentid}
+                travel={id}>
+            </EditComment>
         </div>
     );
 };
