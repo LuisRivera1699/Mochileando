@@ -361,7 +361,9 @@ div.travel-image{
 }
 
 .image-trav{
-  max-width: 30%;
+  /*max-width: 30%;*/
+  width: 200px;
+  height: 100px;
   
 }
 
